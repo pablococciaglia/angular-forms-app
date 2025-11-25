@@ -1,0 +1,96 @@
+<h2>Reactives: Switches</h2>
+<hr />
+
+<form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <!-- Radio -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Gender</label>
+    <div class="col-sm-9">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          value="M"
+          id="maleRadio"
+          formControlName="gender"
+        />
+        <label class="form-check-label" for="maleRadio"> Male </label>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          value="F"
+          id="femaleRadio"
+          formControlName="gender"
+        />
+        <label class="form-check-label" for="radioFemenino"> Female </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label">Notifications</label>
+    <div class="col-sm-9">
+      <div class="form-check form-switch mt-2">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexSwitchCheckChecked"
+          formControlName="acceptNotifications"
+        />
+        <label class="form-check-label" for="flexSwitchCheckChecked"
+          >I want to receive notifications</label
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Switches -->
+  <div class="row mb-3">
+    <label class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+      <div
+        class="form-check"
+        [class.text-danger]="formUtils.isValidField(myForm, 'termsAndConditions')"
+      >
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="flexCheckDefault"
+          formControlName="termsAndConditions"
+        />
+        <label class="form-check-label" for="flexCheckDefault"> Terms and conditions of use </label>
+      </div>
+      @if(formUtils.isValidField(myForm, 'termsAndConditions')) {
+      <span class="form-text text-danger"> Accept conditions of use </span>
+      }
+    </div>
+  </div>
+
+  <!-- Boton submit -->
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+
+<h5>Form values</h5>
+<pre>{{ myForm.value | json }}</pre>
+<br />
+
+<h5>Person</h5>
+<pre>{{ myForm.controls['gender'].value | json }}</pre>
+<br />
+
+<h5>Valid</h5>
+<pre>{{ myForm.valid | json }}</pre>
+
+<!-- <h5>Términos</h5> -->
+<!-- <pre>{{ myForm.controls?.terminos?.errors | json }}</pre> -->
+
+<!-- <br>
+<pre>Condiciones: </pre> -->
